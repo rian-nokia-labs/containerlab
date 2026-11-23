@@ -2,7 +2,7 @@
 
 Get a Nokia network lab running in a few minutes.
 
-[containerlab](https://containerlab.dev/) turns one YAML file into a running lab of real network OS containers. This repo is the short path: install the tool, deploy two Nokia SR Linux nodes, log in, and tear the lab down.
+[containerlab](https://containerlab.dev/) turns one YAML file into a running lab of real network OS containers. This repo is the short path: install the tool, open the lab in the VS Code extension, log in, and tear it down.
 
 ## What you need
 
@@ -22,7 +22,35 @@ containerlab version
 
 Other install options are in the [containerlab install guide](https://containerlab.dev/install/).
 
+## Use the VS Code extension
+
+The [Containerlab extension](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab) is the best way to run this lab. It finds `*.clab.yml` files in the folder you have open, draws the topology, and deploys, destroys, and logs in from the editor.
+
+1. In VS Code, open Extensions and search for `Containerlab`. The publisher is `srl-labs`. The extension id is `srl-labs.vscode-containerlab`.
+2. Clone this repo and open the folder in VS Code.
+3. Click the Containerlab icon in the activity bar. `first-lab.clab.yml` is listed there.
+4. Right-click the lab and choose **Deploy**. When you are done, choose **Destroy**.
+
+From an open topology file, the same actions are on the editor title bar and in the command palette:
+
+| Keys | Action |
+| --- | --- |
+| Ctrl+Alt+D | Deploy |
+| Ctrl+Alt+R | Redeploy |
+| Ctrl+Alt+K | Destroy |
+| Ctrl+Alt+G | Open the topology in TopoViewer |
+
+TopoViewer shows the lab as a diagram next to the YAML. A right-click on a node opens an SSH session or the SR Linux CLI in a VS Code terminal. A right-click on a link starts a packet capture in Wireshark or Edgeshark.
+
+The extension runs containerlab on the machine where that VS Code window is running. On Linux or WSL, that is the machine in front of you. From Windows or a Mac, connect to the lab host with the [Remote SSH extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) and use Containerlab in the remote window.
+
+Your user needs to be in the `docker` and `clab_admins` groups so the extension can run labs without `sudo`. The extension offers to add you to `clab_admins`. Log out and back in after the group change.
+
+Extension guide: [Containerlab VS Code extension](https://containerlab.dev/manual/gui/vsc-extension/).
+
 ## Run the first lab
+
+The extension deploys this lab from the right-click menu. The same lab from a shell:
 
 ```bash
 git clone https://github.com/rian-nokia-labs/containerlab.git

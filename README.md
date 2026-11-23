@@ -40,6 +40,8 @@ From an open topology file, the same actions are on the editor title bar and in 
 | Ctrl+Alt+K | Destroy |
 | Ctrl+Alt+G | Open the topology in TopoViewer |
 
+On a Mac, use Cmd in place of Ctrl.
+
 TopoViewer shows the lab as a diagram next to the YAML. A right-click on a node opens an SSH session or the SR Linux CLI in a VS Code terminal. A right-click on a link starts a packet capture in Wireshark or Edgeshark.
 
 The extension runs containerlab on the machine where that VS Code window is running. On Linux or WSL, that is the machine in front of you. From Windows or a Mac, connect to the lab host with the [Remote SSH extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) and use Containerlab in the remote window.

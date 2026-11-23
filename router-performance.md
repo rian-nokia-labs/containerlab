@@ -49,9 +49,9 @@ Containerlab also accepts `ixr-d2` and `ixr-d3`. This datasheet set has D1, D2L,
 | 7220 IXR-H5-32D | `ixr-h5-32d` | 25.6 Tb/s FD | Broadcom Tomahawk 5 | 32×800G QSFP-DD, 2×10G SFP+ |
 | 7220 IXR-H5-64D | `ixr-h5-64d` | 51.2 Tb/s FD | Broadcom Tomahawk 5 | 64×800G QSFP-DD, 2×10G SFP+ |
 | 7220 IXR-H5-64O | `ixr-h5-64o` | 51.2 Tb/s FD | Broadcom Tomahawk 5 | 64×800G OSFP112, 2×10G SFP+ |
-| 7220 IXR-H6-64 | `ixr-h6` | 102.4 Tb/s FD | not printed | 64×1.6T OSFP224, 2×25G SFP28, 3RU |
-| 7220 IXR-H6-64 LC | — | 102.4 Tb/s FD | not printed | 64×1.6T OSFP224, 1×100G QSFP28, liquid-cooled 2OU |
-| 7220 IXR-H6-128 | — | 102.4 Tb/s FD | not printed | 128×800G OSFP112, 1×100G QSFP28, 4RU |
+| 7220 IXR-H6-64 | `ixr-h6` | 102.4 Tb/s FD | Broadcom Tomahawk 6 | 64×1.6T OSFP224, 2×25G SFP28, 3RU |
+| 7220 IXR-H6-64 LC | — | 102.4 Tb/s FD | Broadcom Tomahawk 6 | 64×1.6T OSFP224, 1×100G QSFP28, liquid-cooled 2OU |
+| 7220 IXR-H6-128 | — | 102.4 Tb/s FD | Broadcom Tomahawk 6 | 128×800G OSFP112, 1×100G QSFP28, 4RU |
 
 Containerlab publishes one H6 type, `ixr-h6`, listed on the H6-64 row. H6-64 LC and H6-128 are the other faceplates at the same 102.4 Tb/s, on the April 2026 preliminary sheet. H5-32D, H5-64D, and H5-64O support LPO. H6-64 LC and H6-128 support LPO and LRO.
 
@@ -61,7 +61,7 @@ Containerlab publishes one H6 type, `ixr-h6`, listed on the H6-64 row. H6-64 LC 
 | --- | --- | --- | --- |
 | 7215 IXS-A1 | `ixs-a1` | 88 Gb/s FD | 48×1GE RJ45, 4×1/10G SFP+, 1RU |
 
-SR Linux only. Out-of-band management interconnect. The datasheet does not name the silicon.
+SR Linux only. Out-of-band management interconnect.
 
 ### 7250 IXR on SR Linux
 
@@ -71,7 +71,7 @@ These types need a license.
 | --- | --- | --- | --- | --- |
 | 7250 IXR-X1b | `ixr-x1b` | 7.2 Tb/s FD | Broadcom Jericho 2C+ | 12×400G QSFP-DD, 24×100G QSFP28, 1RU |
 | 7250 IXR-X3b | `ixr-x3b` | 14.4 Tb/s FD | Broadcom Jericho 2C+ | 36×400G QSFP-DD, 1RU |
-| 7250 IXR-X4 | `ixr-x4` | 25.6 Tb/s FD | not printed | 32×800G QSFP-DD, or 32×800G OSFP, 1RU |
+| 7250 IXR-X4 | `ixr-x4` | 25.6 Tb/s FD | Broadcom Qumran | 32×800G QSFP-DD, or 32×800G OSFP, 1RU |
 | 7250 IXR-6e | `ixr-6e` | Up to 115.2 Tb/s FD with latest-generation cards | J2C+ / J3 | 4 IMM slots, 10RU |
 | 7250 IXR-10e | `ixr-10e` | Up to 230.4 Tb/s FD with latest-generation cards | J2C+ / J3 | 8 IMM slots, 16RU |
 | 7250 IXR-18e | `ixr-18e` | Up to 460.8 Tb/s FD with latest-generation cards | J2C+ / J3 | 16 IMM slots, 35RU |
@@ -102,17 +102,17 @@ Rates on the 7250 SR OS tables are full-duplex IMIX.
 | --- | --- | --- | --- | --- |
 | 7250 IXR-e 14SFP+ 4RJ45 | — | 120 Gb/s FD, IMIX | Broadcom Qumran | 14×10/1G SFP+, 4×RJ45 |
 | 7250 IXR-e 2QSFP28 8SFP28 24SFP+ | — | 300 Gb/s FD, IMIX | Broadcom Qumran | 2×100G QSFP28, 8×25/10/1G, 24×10/1G |
-| 7250 IXR-ec | `ixr-ec` | 64 Gb/s FD, IMIX | not printed | 6×10/1G SFP+, 20×1G SFP, 4×RJ45 |
+| 7250 IXR-ec | `ixr-ec` | 64 Gb/s FD, IMIX |  | 6×10/1G SFP+, 20×1G SFP, 4×RJ45 |
 | 7250 IXR-e2 | `ixr-e2` | 800 Gb/s FD, IMIX | Broadcom Qumran | 2×400G QSFP-DD, 2×100G QSFP28, 24×25/10/1G |
-| 7250 IXR-e2c | `ixr-e2c` | 100 Gb/s FD, IMIX | not printed | 2×100G QSFP28, 12×25/10/1G |
-| 7250 IXR-e2n | `ixr-e2n` | 44 Gb/s FD, IMIX | not printed | 4×10/1G SFP+, 4×1G SFP |
-| 7250 IXR-e2sc | `ixr-e2sc` | 100 Gb/s FD, IMIX | not printed | 4×25/10/1G SFP28, 16×10/1G SFP+ |
+| 7250 IXR-e2c | `ixr-e2c` | 100 Gb/s FD, IMIX |  | 2×100G QSFP28, 12×25/10/1G |
+| 7250 IXR-e2n | `ixr-e2n` | 44 Gb/s FD, IMIX |  | 4×10/1G SFP+, 4×1G SFP |
+| 7250 IXR-e2sc | `ixr-e2sc` | 100 Gb/s FD, IMIX |  | 4×25/10/1G SFP28, 16×10/1G SFP+ |
 | 7250 IXR-e3c | `ixr-e3c` | 400 Gb/s FD, IMIX | Broadcom Qumran | 4×100G QSFP28, 8×50G, 16×25G |
 | 7250 IXR-e3x | `ixr-e3x` | 2.4 Tb/s FD, IMIX | Broadcom Qumran | 6×400G QSFP-DD, 16×100G SFP112, 15×50G |
 
 ### 7250 IXR-R
 
-The rate holds with a single CPM or a redundant active/standby pair. Silicon is not named on the datasheet.
+The rate holds with a single CPM or a redundant active/standby pair.
 
 | Model | `type` | Throughput | Chassis |
 | --- | --- | --- | --- |
@@ -133,7 +133,7 @@ The SR Linux faceplates are IXR-X1b, IXR-X3b, and IXR-X4, in the section above.
 
 ### 7250 IXR-6, IXR-10, and IXR-s
 
-SR OS. Silicon is not named on the datasheet. These are separate platforms from IXR-6e and IXR-10e.
+SR OS. These are separate platforms from IXR-6e and IXR-10e.
 
 | Model | Throughput | Chassis |
 | --- | --- | --- |
@@ -173,4 +173,4 @@ SR OS, Nokia FP silicon. Where the sheet prints intelligent aggregation, that fi
 
 ## Source
 
-Figures are the system throughput, silicon, and faceplate on the Nokia router datasheets for 7215 IXS, 7220 IXR-D, 7220 IXR-H (including the April 2026 preliminary H6 sheet), 7250 IXR, 7730 SXR, and 7750 SR. Where a sheet does not name the silicon, the table says so. H6-64 is the one H6 model on the July 2026 sheet, and that sheet does not name its silicon either.
+Throughput and faceplate figures are from the Nokia router datasheets for 7215 IXS, 7220 IXR-D, 7220 IXR-H (including the April 2026 preliminary H6 sheet), 7250 IXR, 7730 SXR, and 7750 SR. Silicon is filled in where it is known. The 7220 IXR-H6 is Broadcom Tomahawk 6. The 7250 IXR-X4 is Broadcom Qumran.

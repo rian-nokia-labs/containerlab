@@ -143,6 +143,12 @@ sudo containerlab destroy -t clos3.clab.yml
 sudo containerlab destroy -t clos5.clab.yml
 ```
 
+## Build a fabric
+
+[Fabric-Builder](https://fabric-builder.com/) is where you size and design the fabric before you write the lab file. Compare the Nokia data center, routing, and optical platforms, run the sizing wizard, and open a finished design. The site includes a 3-stage leaf-spine example you can change.
+
+Walkthroughs of that work are on the [Fabric-Builder YouTube channel](https://www.youtube.com/@Fabric-Builder).
+
 ## Good to know
 
 - The default hardware type is a 7220 IXR-D2L. That type runs without a license. Without a license the datapath is limited to 1000 packets per second, and the SR Linux process restarts once a week. 7250 IXR, 7730 SXR, and every SR OS node need a license. See [SR Linux and SR OS](nokia-routers.md) and [Router performance](router-performance.md).

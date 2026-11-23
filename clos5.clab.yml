@@ -1,0 +1,70 @@
+# 5-stage Clos: leaf — spine — superspine — spine — leaf.
+# Two pods. Each pod has two leaves and two spines.
+# Leaves connect only to the spines in their own pod.
+# Every spine connects to both superspines.
+# ipv4 order matches the endpoint order. Containerlab applies these
+# addresses on subinterface 0 at deploy time.
+name: clos5
+
+topology:
+  defaults:
+    kind: nokia_srlinux
+    type: ixr-d2l
+    image: ghcr.io/nokia/srlinux:latest
+  nodes:
+    superspine1:
+      group: superspine
+    superspine2:
+      group: superspine
+    spine1:
+      group: spine
+    spine2:
+      group: spine
+    spine3:
+      group: spine
+    spine4:
+      group: spine
+    leaf1:
+      group: leaf
+    leaf2:
+      group: leaf
+    leaf3:
+      group: leaf
+    leaf4:
+      group: leaf
+  links:
+    # Pod 1: leaf1 and leaf2 on spine1 and spine2.
+    - endpoints: ["leaf1:ethernet-1/1", "spine1:ethernet-1/1"]
+      ipv4: ["10.1.0.0/31", "10.1.0.1/31"]
+    - endpoints: ["leaf1:ethernet-1/2", "spine2:ethernet-1/1"]
+      ipv4: ["10.1.0.2/31", "10.1.0.3/31"]
+    - endpoints: ["leaf2:ethernet-1/1", "spine1:ethernet-1/2"]
+      ipv4: ["10.2.0.0/31", "10.2.0.1/31"]
+    - endpoints: ["leaf2:ethernet-1/2", "spine2:ethernet-1/2"]
+      ipv4: ["10.2.0.2/31", "10.2.0.3/31"]
+    # Pod 2: leaf3 and leaf4 on spine3 and spine4.
+    - endpoints: ["leaf3:ethernet-1/1", "spine3:ethernet-1/1"]
+      ipv4: ["10.3.0.0/31", "10.3.0.1/31"]
+    - endpoints: ["leaf3:ethernet-1/2", "spine4:ethernet-1/1"]
+      ipv4: ["10.3.0.2/31", "10.3.0.3/31"]
+    - endpoints: ["leaf4:ethernet-1/1", "spine3:ethernet-1/2"]
+      ipv4: ["10.4.0.0/31", "10.4.0.1/31"]
+    - endpoints: ["leaf4:ethernet-1/2", "spine4:ethernet-1/2"]
+      ipv4: ["10.4.0.2/31", "10.4.0.3/31"]
+    # Spines to both superspines.
+    - endpoints: ["spine1:ethernet-1/3", "superspine1:ethernet-1/1"]
+      ipv4: ["10.10.1.0/31", "10.10.1.1/31"]
+    - endpoints: ["spine1:ethernet-1/4", "superspine2:ethernet-1/1"]
+      ipv4: ["10.10.1.2/31", "10.10.1.3/31"]
+    - endpoints: ["spine2:ethernet-1/3", "superspine1:ethernet-1/2"]
+      ipv4: ["10.10.2.0/31", "10.10.2.1/31"]
+    - endpoints: ["spine2:ethernet-1/4", "superspine2:ethernet-1/2"]
+      ipv4: ["10.10.2.2/31", "10.10.2.3/31"]
+    - endpoints: ["spine3:ethernet-1/3", "superspine1:ethernet-1/3"]
+      ipv4: ["10.10.3.0/31", "10.10.3.1/31"]
+    - endpoints: ["spine3:ethernet-1/4", "superspine2:ethernet-1/3"]
+      ipv4: ["10.10.3.2/31", "10.10.3.3/31"]
+    - endpoints: ["spine4:ethernet-1/3", "superspine1:ethernet-1/4"]
+      ipv4: ["10.10.4.0/31", "10.10.4.1/31"]
+    - endpoints: ["spine4:ethernet-1/4", "superspine2:ethernet-1/4"]
+      ipv4: ["10.10.4.2/31", "10.10.4.3/31"]

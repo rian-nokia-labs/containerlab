@@ -28,7 +28,7 @@ The [Containerlab extension](https://marketplace.visualstudio.com/items?itemName
 
 1. In VS Code, open Extensions and search for `Containerlab`. The publisher is `srl-labs`. The extension id is `srl-labs.vscode-containerlab`.
 2. Clone this repo and open the folder in VS Code.
-3. Click the Containerlab icon in the activity bar. `first-lab.clab.yml` is listed there.
+3. Click the Containerlab icon in the activity bar. `first-lab.clab.yml`, `clos3.clab.yml`, and `clos5.clab.yml` are listed there.
 4. Right-click the lab and choose **Deploy**. When you are done, choose **Destroy**.
 
 From an open topology file, the same actions are on the editor title bar and in the command palette:
@@ -107,7 +107,30 @@ sudo containerlab inspect -t first-lab.clab.yml
 sudo containerlab destroy -t first-lab.clab.yml
 ```
 
-Destroy removes the containers and the lab network. The SR Linux image stays on the host.
+Destroy removes the containers and the lab network. The SR Linux image stays on the host. Use the same `-t` file you deployed.
+
+## Clos labs
+
+Two larger SR Linux fabrics are in this repo. Deploy one lab at a time. Each node wants about 2 GB of RAM, and the labs share the host with anything else you already have running.
+
+`clos3.clab.yml` is a 3-stage Clos: two spines and four leaves. Every leaf connects to both spines, so the path from one leaf to another is leaf, spine, leaf. Six nodes, about 12 GB of RAM.
+
+```bash
+sudo containerlab deploy -t clos3.clab.yml
+```
+
+`clos5.clab.yml` is a 5-stage Clos with two pods under two superspines. Each pod has two leaves and two spines. A leaf connects only to the spines in its own pod, and every spine connects to both superspines. The path from a leaf in one pod to a leaf in the other is leaf, spine, superspine, spine, leaf. Ten nodes, about 20 GB of RAM.
+
+```bash
+sudo containerlab deploy -t clos5.clab.yml
+```
+
+Each node has `group` set to `leaf`, `spine`, or `superspine`, so TopoViewer stacks the tiers. Fabric links use `ethernet-1/1` and up, and each link has an IPv4 /31. Containerlab configures those addresses on subinterface 0 when the lab starts. The first address in `ipv4` belongs to the first endpoint. Routing protocols are not configured.
+
+```bash
+sudo containerlab destroy -t clos3.clab.yml
+sudo containerlab destroy -t clos5.clab.yml
+```
 
 ## Good to know
 

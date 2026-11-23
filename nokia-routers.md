@@ -20,7 +20,7 @@ vSIM is the older form. Containerlab still runs it, and the SR OS docs point new
 
 ## Datapath
 
-An unlicensed SR Linux node runs the 7220 IXR types only. The emulated datapath is capped at 1000 packets per second, and the `sr_linux` process restarts once a week. A license file removes both limits. It does not turn the container into the forwarding rate of the hardware. The datapath is still the XDP emulation, and the host CPU has to support SSSE3.
+An unlicensed SR Linux node runs the 7220 IXR types only. The emulated datapath is capped at 1000 packets per second, and the `sr_linux` process restarts once a week. A license file removes both limits. It does not turn the container into the forwarding rate of the hardware. Datasheet rates for each platform are in [Router performance](router-performance.md). The datapath is still the XDP emulation, and the host CPU has to support SSSE3.
 
 SR-SIM and vSIM have no unlicensed mode. Without a license file, containerlab refuses to deploy the node.
 

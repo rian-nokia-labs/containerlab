@@ -4,7 +4,16 @@ Get a Nokia network lab running in a few minutes.
 
 [containerlab](https://containerlab.dev/) turns one YAML file into a running lab of real network OS containers. This repo is the short path: install the tool, open the lab in the VS Code extension, log in, and tear it down.
 
-Which Nokia router to use, what it costs to run, and which types need a license: [SR Linux and SR OS](nokia-routers.md). Hardware throughput for those platforms: [Router performance](router-performance.md).
+## Nokia routers
+
+Two guides sit next to this quickstart.
+
+| Guide | What it answers |
+| --- | --- |
+| [SR Linux and SR OS](nokia-routers.md) | Which router to put in a lab, what it costs in CPU and RAM, how to write it in the YAML, and which types need a license. |
+| [Router performance](router-performance.md) | Hardware throughput, silicon, and faceplate for each platform, and the containerlab `type` that boots it. |
+
+The labs in this repo are SR Linux. The default type is a 7220 IXR-D2L.
 
 ## What you need
 
@@ -136,7 +145,7 @@ sudo containerlab destroy -t clos5.clab.yml
 
 ## Good to know
 
-- The default hardware type is a 7220 IXR-D2L. That type runs without a license. Without a license the datapath is limited to 1000 packets per second, and the SR Linux process restarts once a week. 7250 IXR, 7730 SXR, and every SR OS node need a license. See [SR Linux and SR OS](nokia-routers.md). Datasheet throughput for each platform is in [Router performance](router-performance.md).
+- The default hardware type is a 7220 IXR-D2L. That type runs without a license. Without a license the datapath is limited to 1000 packets per second, and the SR Linux process restarts once a week. 7250 IXR, 7730 SXR, and every SR OS node need a license. See [SR Linux and SR OS](nokia-routers.md) and [Router performance](router-performance.md).
 - Save config you want to keep with `tools system configuration save` inside SR Linux, or with `sudo containerlab save -t first-lab.clab.yml`.
 - SR Linux kind details, credentials, and management APIs: [Nokia SR Linux in containerlab](https://containerlab.dev/manual/kinds/srl/).
 - The upstream quickstart and command reference: [containerlab quickstart](https://containerlab.dev/quickstart/).

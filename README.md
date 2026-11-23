@@ -4,6 +4,8 @@ Get a Nokia network lab running in a few minutes.
 
 [containerlab](https://containerlab.dev/) turns one YAML file into a running lab of real network OS containers. This repo is the short path: install the tool, open the lab in the VS Code extension, log in, and tear it down.
 
+Which Nokia router to use, what it costs to run, and which types need a license: [SR Linux and SR OS](nokia-routers.md).
+
 ## What you need
 
 - A Linux host. The installer below is tested on Ubuntu 22.04 and 24.04, Debian 11 and 12, and RHEL 9 and similar. On Windows, use WSL2. On a Mac, use a Linux VM.
@@ -134,7 +136,7 @@ sudo containerlab destroy -t clos5.clab.yml
 
 ## Good to know
 
-- The default hardware type is a 7220 IXR-D2L. That type runs without a license. Without a license the datapath is limited to 1000 packets per second, and the SR Linux process restarts once a week.
+- The default hardware type is a 7220 IXR-D2L. That type runs without a license. Without a license the datapath is limited to 1000 packets per second, and the SR Linux process restarts once a week. 7250 IXR, 7730 SXR, and every SR OS node need a license. See [SR Linux and SR OS](nokia-routers.md).
 - Save config you want to keep with `tools system configuration save` inside SR Linux, or with `sudo containerlab save -t first-lab.clab.yml`.
 - SR Linux kind details, credentials, and management APIs: [Nokia SR Linux in containerlab](https://containerlab.dev/manual/kinds/srl/).
 - The upstream quickstart and command reference: [containerlab quickstart](https://containerlab.dev/quickstart/).

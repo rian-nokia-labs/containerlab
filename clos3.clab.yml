@@ -12,16 +12,22 @@ topology:
   nodes:
     spine1:
       group: spine
+      startup-config: configs/spine.cli
     spine2:
       group: spine
+      startup-config: configs/spine.cli
     leaf1:
       group: leaf
+      startup-config: configs/leaf.cli
     leaf2:
       group: leaf
+      startup-config: configs/leaf.cli
     leaf3:
       group: leaf
+      startup-config: configs/leaf.cli
     leaf4:
       group: leaf
+      startup-config: configs/leaf.cli
   links:
     - endpoints: ["leaf1:ethernet-1/1", "spine1:ethernet-1/1"]
       ipv4: ["10.1.0.0/31", "10.1.0.1/31"]

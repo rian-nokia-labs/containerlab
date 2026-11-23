@@ -125,7 +125,7 @@ sudo containerlab deploy -t clos3.clab.yml
 sudo containerlab deploy -t clos5.clab.yml
 ```
 
-Each node has `group` set to `leaf`, `spine`, or `superspine`, so TopoViewer stacks the tiers. Fabric links use `ethernet-1/1` and up, and each link has an IPv4 /31. Containerlab configures those addresses on subinterface 0 when the lab starts. The first address in `ipv4` belongs to the first endpoint. Routing protocols are not configured.
+Each node has `group` set to `leaf`, `spine`, or `superspine`, so TopoViewer stacks the tiers. Fabric links use `ethernet-1/1` and up, and each link has an IPv4 /31. The first address in `ipv4` belongs to the first endpoint. Containerlab configures that address on subinterface 0. `configs/leaf.cli` and `configs/spine.cli` add those subinterfaces to the `default` network-instance, which is what makes the addresses reachable. Routing protocols are not configured.
 
 ```bash
 sudo containerlab destroy -t clos3.clab.yml

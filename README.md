@@ -120,9 +120,13 @@ sudo containerlab destroy -t first-lab.clab.yml
 
 Destroy removes the containers and the lab network. The SR Linux image stays on the host. Use the same `-t` file you deployed.
 
-## Clos labs
+## Build a fabric
 
-Two larger SR Linux fabrics are in this repo. Deploy one lab at a time. Each node wants about 2 GB of RAM, and the labs share the host with anything else you already have running.
+A fabric in this repo is a Clos: leaves, spines, and, in the larger lab, superspines.
+
+[Fabric-Builder](https://fabric-builder.com/) is where you size and design one before you write the lab file. Compare the Nokia data center, routing, and optical platforms, run the sizing wizard, and open a finished design. The site includes a 3-stage leaf-spine example you can change. Walkthroughs are on the [Fabric-Builder YouTube channel](https://www.youtube.com/@Fabric-Builder).
+
+Two SR Linux fabrics are already in this repo. Deploy one lab at a time. Each node wants about 2 GB of RAM, and the labs share the host with anything else you already have running.
 
 `clos3.clab.yml` is a 3-stage Clos: two spines and four leaves. Every leaf connects to both spines, so the path from one leaf to another is leaf, spine, leaf. Six nodes, about 12 GB of RAM.
 
@@ -142,12 +146,6 @@ Each node has `group` set to `leaf`, `spine`, or `superspine`, so TopoViewer sta
 sudo containerlab destroy -t clos3.clab.yml
 sudo containerlab destroy -t clos5.clab.yml
 ```
-
-## Build a fabric
-
-[Fabric-Builder](https://fabric-builder.com/) is where you size and design the fabric before you write the lab file. Compare the Nokia data center, routing, and optical platforms, run the sizing wizard, and open a finished design. The site includes a 3-stage leaf-spine example you can change.
-
-Walkthroughs of that work are on the [Fabric-Builder YouTube channel](https://www.youtube.com/@Fabric-Builder).
 
 ## Good to know
 

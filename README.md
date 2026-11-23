@@ -115,3 +115,29 @@ Destroy removes the containers and the lab network. The SR Linux image stays on 
 - Save config you want to keep with `tools system configuration save` inside SR Linux, or with `sudo containerlab save -t first-lab.clab.yml`.
 - SR Linux kind details, credentials, and management APIs: [Nokia SR Linux in containerlab](https://containerlab.dev/manual/kinds/srl/).
 - The upstream quickstart and command reference: [containerlab quickstart](https://containerlab.dev/quickstart/).
+
+## Arista, Cisco, and Juniper images
+
+SR Linux is the image you can pull with no account. Arista, Cisco, and Juniper images come from the vendor. Download the image, import or build it locally, then use that local name in the topology. The full catalog is the [containerlab kinds list](https://containerlab.dev/manual/kinds/).
+
+### Arista
+
+[cEOS](https://containerlab.dev/manual/kinds/ceos/) is the container. Create an account on arista.com, download the `cEOS64` tar for the release you want, and import it with `docker import`. The kind is `arista_ceos`, and the interfaces in a topology are `eth1`, `eth2`, and so on.
+
+[vEOS](https://containerlab.dev/manual/kinds/vr-veos/) is the VM form. Build that image with [vrnetlab](https://containerlab.dev/manual/vrnetlab/) from the vEOS disk image.
+
+### Cisco
+
+[XRd](https://containerlab.dev/manual/kinds/xrd/) is the IOS XR control-plane container. Download it with an active Cisco service account, then load the image into Docker. The kind is `cisco_xrd`. Containerlab does not run the XRd vRouter form, which needs PCI interfaces. Cisco's own notes on where to get the image are in the [XRd images tutorial](https://xrdocs.io/virtual-routing/tutorials/2022-08-22-xrd-images-where-can-one-get-them/).
+
+[IOL](https://containerlab.dev/manual/kinds/cisco_iol/) is IOS and IOS XE packaged as a Linux binary. Take the `iol` or `ioll2` image from the Cisco CML reference-platform ISO and build a container with vrnetlab. The kind is `cisco_iol`. It is much lighter than the VM images.
+
+The other Cisco products are VMs. Build [XRv](https://containerlab.dev/manual/kinds/vr-xrv/), [XRv9k](https://containerlab.dev/manual/kinds/vr-xrv9k/), [CSR1000v](https://containerlab.dev/manual/kinds/vr-csr/), [Nexus 9000v](https://containerlab.dev/manual/kinds/vr-n9kv/), [Catalyst 9000v](https://containerlab.dev/manual/kinds/vr-cat9kv/), and the rest from the vendor disk image with [vrnetlab](https://containerlab.dev/manual/vrnetlab/).
+
+### Juniper
+
+[cRPD](https://containerlab.dev/manual/kinds/crpd/) is the routing-daemon container. Download the cRPD Docker tarball from Juniper and load it with `docker load`. The kind is `juniper_crpd`. A license file is what turns on the licensed features.
+
+[cSRX](https://containerlab.dev/manual/kinds/csrx/) is the container firewall. Load that image the same way and use the kind `juniper_csrx`.
+
+[vMX](https://containerlab.dev/manual/kinds/vr-vmx/), [vQFX](https://containerlab.dev/manual/kinds/vr-vqfx/), [vSRX](https://containerlab.dev/manual/kinds/vr-vsrx/), [vJunos-router](https://containerlab.dev/manual/kinds/vr-vjunosrouter/), [vJunos-switch](https://containerlab.dev/manual/kinds/vr-vjunosswitch/), and [vJunosEvolved](https://containerlab.dev/manual/kinds/vr-vjunosevolved/) are VMs. Build each one with [vrnetlab](https://containerlab.dev/manual/vrnetlab/) from the Juniper disk image.

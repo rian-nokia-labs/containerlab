@@ -60,7 +60,7 @@ cd containerlab
 sudo containerlab deploy -t first-lab.clab.yml
 ```
 
-The first deploy pulls `ghcr.io/nokia/srlinux:latest`. That image is public. The pull is a few gigabytes, and it is the slow part. Later deploys reuse the local image.
+The first deploy pulls `ghcr.io/nokia/srlinux:26.7.2`. That image is public. The pull is a few gigabytes, and it is the slow part. Later deploys reuse the local image.
 
 The lab file is two SR Linux nodes and one link:
 
@@ -71,10 +71,10 @@ topology:
   nodes:
     srl1:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux:latest
+      image: ghcr.io/nokia/srlinux:26.7.2
     srl2:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux:latest
+      image: ghcr.io/nokia/srlinux:26.7.2
   links:
     - endpoints: ["srl1:ethernet-1/1", "srl2:ethernet-1/1"]
 ```

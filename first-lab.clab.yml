@@ -4,9 +4,9 @@ topology:
   nodes:
     srl1:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux:latest
+      image: ghcr.io/nokia/srlinux:26.7.2
     srl2:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux:latest
+      image: ghcr.io/nokia/srlinux:26.7.2
   links:
     - endpoints: ["srl1:ethernet-1/1", "srl2:ethernet-1/1"]
